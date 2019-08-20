@@ -36,6 +36,7 @@ function transform() {
     return ret;
   });
 
+  // convert dates in header row to LS format
   const outputHeaderRow = headerRow.map(function(value) {
     if (value === "") {
       return value;
@@ -63,6 +64,7 @@ function transform() {
     }
   });
 
+  // convert attendance records from iPad format to LS format
   const failedAssociations = [];
   const outputData = ipadData.map(function(row) {
     const name =
@@ -102,6 +104,7 @@ function transform() {
     .getRange(1, 1, values.length, outputHeaderRow.length)
     .setValues(values);
 
+  // notify the user of failures
   if (failedAssociations.length > 0)
     SpreadsheetApp.getUi().alert(
       "These names weren't matched to NetIDs:\n" +
@@ -111,9 +114,11 @@ function transform() {
 }
 
 function reset() {
-  Sheet()
-    .outputSheet()
-    .clear();
+  const SheetFactory = Sheet();
+  SheetFactory.outputSheet().clear();
+  // SheetFactory.netIdsSheet().clear();
+  // SheetFactory.ipadOneSheet().clear();
+  // SheetFactory.ipadTwoSheet().clear();
 }
 
 function onOpenTrigger() {
