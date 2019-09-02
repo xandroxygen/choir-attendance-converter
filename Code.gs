@@ -116,9 +116,9 @@ function transform() {
 function reset() {
   const SheetFactory = Sheet();
   SheetFactory.outputSheet().clear();
-  // SheetFactory.netIdsSheet().clear();
-  // SheetFactory.ipadOneSheet().clear();
-  // SheetFactory.ipadTwoSheet().clear();
+  SheetFactory.netIdsSheet().clear();
+  SheetFactory.ipadOneSheet().clear();
+  SheetFactory.ipadTwoSheet().clear();
 }
 
 function onOpenTrigger() {
