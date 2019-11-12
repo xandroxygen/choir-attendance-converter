@@ -34,7 +34,8 @@ function transform() {
   ) {
     ret[firstName + " " + lastName] = netId;
     return ret;
-  });
+  },
+  {});
 
   // convert dates in header row to LS format
   const outputHeaderRow = headerRow.map(function(value) {
@@ -87,7 +88,9 @@ function transform() {
         case "Absent":
           return 0;
         default:
-          throw new Error("Encountered invalid attendance value in iPad data");
+          throw new Error(
+            "Encountered invalid attendance value '" + record + "' in iPad data"
+          );
       }
     });
 
